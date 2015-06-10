@@ -26,18 +26,3 @@ retweetsEdgelist.matrix <- function(tweets.df) {
   cbind(rts.edgelist.df$Source, rts.edgelist.df$Target)
 }
 
-writeGephiCsv <- function(tweets.df,
-                          vertices.csv.fn=NULL,edges.csv.fn=NULL
-                          ) {
-  if (is.null(vertices.csv.fn)) {
-    vertices.csv.fn <- 'output/csv/vertices.csv'
-  }
-  if (is.null(edges.csv.fn)) {
-    edges.csv.fn <- 'output/csv/edges.csv'
-  }
-  edges.df <- retweetsEdgelist(tweets.df)
-  write.csv(edges.df, file=edges.csv.fn, row.names=F)
-  vertices.df <- data.frame(ID=union(edges.df$Source, edges.df$Target))
-  write.csv(vertices.df, file=vertices.csv.fn, row.names=F)
-}
-

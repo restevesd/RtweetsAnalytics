@@ -12,8 +12,9 @@ Therefore, these project should be used together.
 Features:
 * Create graph of tweets where the relation between tweets is the
 following: tweet1 -> tweet2 if tweet2 is a retweet of tweet1.
+* Create csv files that can be exported to gephi
 * Plot the graph
-* Export graph to gephi
+
 
 
 

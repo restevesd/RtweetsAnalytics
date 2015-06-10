@@ -1,13 +1,24 @@
-DBPATH <- 'db/tweets.db'
-NTWEETS <- 100
+config.path <- 'config/twitterDb.R'
+
+if (file.exists(config.path)) {
+  source(config.path)
+}
+
+if (!exists('DBPATH')) {
+  DBPATH <- 'db/tweets.db'
+}
+
+if (!exists('NTWEETS')) {
+  NTWEETS <- 100
+}
 
 require('twitteR')
 # In file 'twitterAuth.R' one can assign appropriate values to variables: 
 # api_key, api_secret, access_token, access_token_secret
 
 twitterOAuth <- function() {
-  if (file.exists('twitterAuth.R')) {
-    source('twitterAuth.R')
+  if (file.exists('config/twitterAuth.R')) {
+    source('config/twitterAuth.R')
   }
   options(httr_oauth_cache=TRUE)
   setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
@@ -18,8 +29,8 @@ source('acctionsDb.R')
 source('createDb.R')
 
 createTwitterModels <- function(db.path=DBPATH) {
-  models <- list(c("tweets", "conf/db/tweetsTable.txt"),
-                 c("hashes", "conf/db/hashesTable.txt") )
+  models <- list(c("tweets", "config/db/tweetsTable.txt"),
+                 c("hashes", "config/db/hashesTable.txt") )
   connection <- getConnection(db.path)
   createModels(connection, models)
   dbDisconnect(connection)
@@ -44,10 +55,11 @@ getAndSaveTweets <- function(hash.txt, n=NTWEETS, db.path=DBPATH) {
   }
 }
 
-getTweetsFromDB <- function(hash.txt, db.path=DBPATH) {
+getTweetsFromDB <- function(hash.txt, db.path=DBPATH, n.tweets=1000) {
   connection <- getConnection(db.path)
   tweets.df <- dbReadChildrenM2M(connection, 'hashes', hash.txt,
-                                 'tweets', father.pk='hash')
+                                 'tweets', father.pk='hash',
+                                 n.fetch=n.tweets)
   dbDisconnect(connection)
   tweets.df
 }

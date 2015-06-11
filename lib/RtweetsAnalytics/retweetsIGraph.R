@@ -1,4 +1,6 @@
-source('retweets.R')
+#depends on retweets.R
+#
+
 
 tweetRetweetGraph <- function(tweets.df) {
   graph.edgelist(retweetsEdgelist.matrix(tweets.df))
@@ -38,13 +40,9 @@ tweetRetweetPlot <- function(rt.graph, Nlabels=10, sizeMulti=0.01) {
        edge.arrow.size=0.2,
        edge.curved=0.3,
        layout=l)
-
 }
 
-
-writeGephiCsv <- function(tweets.df,
-                          nodes.csv.fn=NULL,edges.csv.fn=NULL
-                          ) {
+writeGephiCsv <- function(tweets.df, nodes.csv.fn=NULL, edges.csv.fn=NULL) {
   if (is.null(nodes.csv.fn)) {
     nodes.csv.fn <- 'output/csv/nodes.csv'
   }

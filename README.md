@@ -1,5 +1,8 @@
 # RtweetsAnalytics
 
+
+## Description
+
 This project uses various ideas to present twitter's data. Many of
 these ideas can be found on internet. I have selected ones that I or
 people I work with find useful and rewritten them to suit our
@@ -16,5 +19,13 @@ following: tweet1 -> tweet2 if tweet2 is a retweet of tweet1.
 * Plot the graph
 
 
+## Examples
 
+See 'examples' directory
 
+## Tests
+
+```r
+require('testthat')
+test_dir('tests/testthat')
+```

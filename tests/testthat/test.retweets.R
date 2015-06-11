@@ -1,6 +1,4 @@
 source('helper.R')
-source('retweets.R')
-
 
 texts <- c("RT @orvtech: #Python: some text",
            "RT @orvtech: #Python: some text RT @aaa: ",

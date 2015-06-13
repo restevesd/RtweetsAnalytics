@@ -22,6 +22,5 @@ tweets.df$created > 1
 freqPlotByTRT(tweets.df, "2015-06-04") 
 freqPlotByTRT(tweets.df, end.date="2015-06-09")
 freqPlotByTRT(tweets.df, "2015-06-04", "2015-06-09")
-freqPlotByTRT(tweets.df, "2015-06-04", "2015-06-20") +
-  scale_colour_discrete(labels=c("Control", "Treatment 1"))
+freqPlotByTRT(tweets.df, "2015-06-04", "2015-06-20") 
 

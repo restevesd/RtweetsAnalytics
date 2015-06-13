@@ -8,4 +8,4 @@ source('RtweetsAnalytics.R')
 hash.txt <- getAllHashes()[1,1]
 tweets.df <- getTweetsFromDB(hash.txt, n.tweets=100)
 rt.graph <- tweetRetweetGraph(tweets.df)
-tweetRetweetPlot(rt.graph)
+tweetRetweetPlot(rt.graph, PercentageOfConecctions = 0.1)

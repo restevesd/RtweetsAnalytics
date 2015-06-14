@@ -16,13 +16,16 @@ tweetRetweetNodes <- function(rt.graph) {
                             Nretweets = retweets,
                             stringsAsFactors=FALSE)
   merged <- merge(retwitted.df, retweets.df)
-  merged[order(merged$orginalOrder),]
+  # We should reurn it in the orginal order since it is needed for
+  # ploting the graph of connections
+  merged[order(merged$orginalOrder),-3]
+  
 }
 
 tweetRetweetPlot <- function(rt.graph, Nlabels=10, sizeMulti=0.01,
-                             PercentageOfConecctions=1) {
+                             PercentageOfConnections=1) {
   Ntotal <- length(E(rt.graph))
-  Nconn <- round(Ntotal*PercentageOfConecctions)
+  Nconn <- round(Ntotal*PercentageOfConnections)
   new.graph <- subgraph.edges(rt.graph, E(rt.graph)[sample(1:Ntotal, Nconn)])
   
   nodes.df <- tweetRetweetNodes(new.graph)

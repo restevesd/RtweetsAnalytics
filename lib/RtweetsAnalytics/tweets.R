@@ -29,6 +29,19 @@ limitByDate <- function(tweets.df, init.date=NULL, end.date=NULL) {
   new.df
 }
 
+basicStat <- function(tweets.df) {
+  bs <- list()
+  bs$totalNumber <- dim(tweets.df)[1]
+  bs$retwittedNumber <- dim(retwitted(tweets.df))[1]
+  bs$noRetwittedNumber <- dim(noRetwitted(tweets.df))[1]
+  bs
+}
+
+basicStatPlot <- function(tweets.df) {
+  bs <- basicStat(tweets.df)
+  
+}
+
 freqPlotAll <- function(tweets.df) {
   ggplot(data=tweets.df) + geom_freqpoly(aes(toDateTime(created)), binwidth=10000)+
     theme_bw() + xlab('DateTime')  

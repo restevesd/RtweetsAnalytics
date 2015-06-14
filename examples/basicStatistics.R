@@ -8,17 +8,12 @@ source('RtweetsAnalytics.R')
 hash.txt <- getAllHashes()[1,1]
 tweets.df <- getTweetsFromDB(hash.txt, n.tweets=100)
 
-bs <- basicStat(tweets.df)
-
-basicStatDf(tweets.df)
-
-bs.df <- data.frame(Number=c(bs$totalNumber, bs$noRetwittedNumber, bs$retwittedNumber))
-rownames(bs.df) <- c('Total','No retwitted', 'Retwitted')
+bs.df <- basicStatDf(tweets.df)
 bs.df
 
-print(paste('Total number of tweets:', dim(tweets.df)[1]))
-print(paste('Number of retweets:', dim(retwitted(tweets.df))[1]))
-print(paste('Number of no retwitted tweets:', dim(noRetwitted(tweets.df))[1]))
+print(paste('Total number of tweets:', bs.df[1,1]))
+print(paste('Number of retweets:', bs.df[3,1]))
+print(paste('Number of no retwitted tweets:', bs.df[2,1]))
 
 freqPlotAll(tweets.df)
 freqPlotByTRT(tweets.df)

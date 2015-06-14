@@ -37,6 +37,14 @@ basicStat <- function(tweets.df) {
   bs
 }
 
+
+basicStatDf <- function(tweets.df) {
+  bs <- basicStat(tweets.df)
+  bs.df <- data.frame(Number=c(bs$totalNumber, bs$noRetwittedNumber, bs$retwittedNumber))
+  rownames(bs.df) <- c('Total','No retwitted', 'Retwitted')
+  bs.df
+}
+
 basicStatPlot <- function(tweets.df) {
   bs <- basicStat(tweets.df)
   

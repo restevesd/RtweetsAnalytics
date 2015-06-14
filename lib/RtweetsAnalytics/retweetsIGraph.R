@@ -18,8 +18,9 @@ tweetRetweetNodes <- function(rt.graph) {
   merged <- merge(retwitted.df, retweets.df)
   # We should reurn it in the orginal order since it is needed for
   # ploting the graph of connections
-  merged[order(merged$orginalOrder),-3]
-  
+  merged <- merged[order(merged$orginalOrder),-3]
+  rownames(merged) <- c()
+  merged
 }
 
 tweetRetweetPlot <- function(rt.graph, Nlabels=10, sizeMulti=0.01,

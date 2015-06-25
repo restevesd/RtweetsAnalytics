@@ -23,6 +23,13 @@ tweetRetweetNodes <- function(rt.graph) {
   merged
 }
 
+tweetRetweetNodesFull <- function(rt.graph) {
+  nodes <- tweetRetweetNodes(rt.graph)
+  users <- getAllUsers()
+  merged <- merge(nodes, users, all.x=TRUE, by.x="Nodes", by.y="screenName")
+  merged
+}
+
 tweetRetweetPlot <- function(rt.graph, Nlabels=10, sizeMulti=0.01,
                              PercentageOfConnections=1) {
   Ntotal <- length(E(rt.graph))

@@ -13,7 +13,9 @@ retweetsEdgelist(tweets.df) # list of edges of graph
 trt.graph <- tweetRetweetGraph(tweets.df)
 
 ## Graph statistics
-tweetRetweetNodes(trt.graph)
+nodes <- tweetRetweetNodes(trt.graph)
+dim(nodes)
 
 ## Get full statistics (join with db users)
-tweetRetweetNodesFull(trt.graph)
+nodesFull <- tweetRetweetNodesFull(trt.graph)
+dim(nodesFull)

@@ -25,12 +25,3 @@ freqPlotByTRT(tweets.df, end.date="2015-06-09")
 freqPlotByTRT(tweets.df, "2015-06-04", "2015-06-09")
 freqPlotByTRT(tweets.df, "2015-06-04", "2015-06-20") 
 
-require('ggplot2')
-
-bs <- basicStat(tweets.df)
-
-bs.df
-ggplot(data=NULL) +
-  geom_bar(aes(x=c("Originl","Retwitted"),
-               y=c(Original, )), stat='identity') +
-  theme_bw()

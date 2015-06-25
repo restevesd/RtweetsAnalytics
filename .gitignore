@@ -11,3 +11,5 @@ db/*
 
 .Rhistory
 .RData
+
+db/tweets.db

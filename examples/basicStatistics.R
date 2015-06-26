@@ -25,7 +25,8 @@ freqPlotByTRT(tweets.df, end.date="2015-06-09")
 freqPlotByTRT(tweets.df, "2015-06-04", "2015-06-09")
 freqPlotByTRT(tweets.df, "2015-06-04", "2015-06-20") 
 
-useers.df <- getAllUsers()
+users.df <- getAllUsers()
+colnames(users.df)
 
 bs2.df <- basicStat2Df(tweets.df, users.df)
 bs2.df

@@ -37,9 +37,6 @@ basicStat <- function(tweets.df) {
   bs
 }
 
-
-
-
 basicStatDf <- function(tweets.df) {
   bs <- basicStat(tweets.df)
   bs.df <- data.frame(Number=c(bs$totalNumber, bs$noRetwittedNumber, bs$retwittedNumber))
@@ -47,21 +44,18 @@ basicStatDf <- function(tweets.df) {
   bs.df
 }
 
-basicStat2Df <- function(tweers.df, users.df) {
+basicStat2Df <- function(tweets.df, users.df) {
   t.df <- tweets.df[c('screenName')]
   u.df <- users.df[c('screenName', 'followersCount')]
   merged <- merge(t.df, u.df, all.x=TRUE)
   reach <- sum(merged$followersCount, na.rm = TRUE)
-  data.frame(Reach=reach)
+  bs2 <- data.frame(Reach=reach)
+  bs2
 }
 
 basicStatPlot <- function(tweets.df) {
-  bs <- basicStat(tweets.df)
-  
+  bs <- basicStat(tweets.df)  
 }
-
-
-
 
 freqPlotAll <- function(tweets.df) {
   ggplot(data=tweets.df) + geom_freqpoly(aes(toDateTime(created)), binwidth=10000)+

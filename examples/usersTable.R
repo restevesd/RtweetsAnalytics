@@ -19,3 +19,6 @@ dim(nodes)
 ## Get full statistics (join with db users)
 nodesFull <- tweetRetweetNodesFull(trt.graph)
 dim(nodesFull)
+dim(getAllUsers())
+
+colnames(nodesFull)

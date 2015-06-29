@@ -6,12 +6,7 @@ source('RtweetsAnalytics.R')
 
 hash.txt <- getAllHashes()[1,1]
 tweets.df <- getTweetsFromDB(hash.txt, n.tweets=100)
-users.df <- getAllUsers()
-lookupAndAddCoordinates(users.df$location)
-coordinates.df <- getAll("coordinates")
 
-coordinates.df 
-tsCs <- tweetsCoordinatesDisturbed(tweets.df, users.df, coordinates.df)
-
-usersMapPlot(tsCs)
+extractPosters(tweets.df)
+extractTweets(tweets.df)
 

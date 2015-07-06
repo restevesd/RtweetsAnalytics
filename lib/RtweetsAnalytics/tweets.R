@@ -48,8 +48,10 @@ basicStat2Df <- function(tweets.df, users.df) {
   t.df <- tweets.df[c('screenName')]
   u.df <- users.df[c('screenName', 'followersCount')]
   merged <- merge(t.df, u.df, all.x=TRUE)
+  merged2 <- merge(unique(tweets.df[c('screenName')]), u.df, all.x=TRUE)
   reach <- sum(merged$followersCount, na.rm = TRUE)
-  bs2 <- data.frame(Reach=reach)
+  audience <- sum(merged2$followersCount, na.rm = TRUE)
+  bs2 <- data.frame(Reach=reach, Audience=audience)
   bs2
 }
 

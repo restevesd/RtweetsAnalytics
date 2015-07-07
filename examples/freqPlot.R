@@ -7,4 +7,4 @@ source('RtweetsAnalytics.R')
 
 hash.txt <- getAllHashes()[1,1]
 tweets.df <- getTweetsFromDB(hash.txt, n.tweets=100)
-createdPlot(tweets.df)
+freqPlotByTRT(tweets.df)

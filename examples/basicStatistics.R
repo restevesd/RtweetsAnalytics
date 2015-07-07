@@ -30,3 +30,4 @@ colnames(users.df)
 
 bs2.df <- basicStat2Df(tweets.df, users.df)
 bs2.df
+

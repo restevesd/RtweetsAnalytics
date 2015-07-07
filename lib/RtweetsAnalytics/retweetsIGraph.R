@@ -8,16 +8,19 @@ tweetRetweetGraph <- function(tweets.df) {
 }
 
 tweetRetweetNodes <- function(rt.graph) {
-  retwitted <- degree(rt.graph, mode='out')
+  retwitted <- degree(rt.graph, mode='in')
   retwitted.df <- data.frame(Nodes=names(retwitted),
                              Nretwitted = retwitted,
                              orginalOrder = 1:length(retwitted),
                              stringsAsFactors=FALSE)
-  retweets <- degree(rt.graph, mode='in')
+  retweets <- degree(rt.graph, mode='out')
   retweets.df <- data.frame(Nodes=names(retweets),
                             Nretweets = retweets,
                             stringsAsFactors=FALSE)
   merged <- merge(retwitted.df, retweets.df)
+  prv <- page.rank(rt.graph)$vector
+  prv.df <- data.frame(Nodes=names(prv), PageRank=prv)
+  merged <- merge(merged, prv.df)
   # We should reurn it in the orginal order since it is needed for
   # ploting the graph of connections
   merged <- merged[order(merged$orginalOrder),-3]

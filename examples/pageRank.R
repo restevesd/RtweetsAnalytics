@@ -11,6 +11,14 @@ page.rank(rt.graph)
 tweetRetweetNodes(rt.graph)
 
 
+
+diameter(rt.graph)
+average.path.length(rt.graph)
+graph.density(rt.graph)
+clusters(rt.graph)$no
+
+basicStat3Df(rt.graph)
+
 retwitted <- degree(rt.graph, mode='in')
 retwitted
 retwitted.df <- data.frame(Nodes=names(retwitted),

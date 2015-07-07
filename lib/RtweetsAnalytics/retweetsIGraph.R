@@ -7,7 +7,17 @@ tweetRetweetGraph <- function(tweets.df) {
   graph.edgelist(retweetsEdgelist.matrix(tweets.df))
 }
 
-tweetRetweetNodes <- function(rt.graph) {
+basicStat3Df <- function(rt.graph) {
+  bs3.df <- data.frame(Diameter=diameter(rt.graph),
+                       AveragePathLength=average.path.length(rt.graph),
+                       Density=graph.density(rt.graph),
+                       Clusters=clusters(rt.graph)$no
+                       )
+  bs3.df
+}
+
+
+tweetRetweetNodes <- function(rt.graphw) {
   retwitted <- degree(rt.graph, mode='in')
   retwitted.df <- data.frame(Nodes=names(retwitted),
                              Nretwitted = retwitted,
